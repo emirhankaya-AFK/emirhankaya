@@ -1,0 +1,55 @@
+import os
+import pyperclip
+from gtts import gTTS
+from pydub import AudioSegment
+
+def paragrafi_tek_satir_yap(paragraf):
+    # Paragraftaki yeni satır ve fazla boşluk karakterlerini kaldır
+    tek_satir = ' '.join(paragraf.split())
+    return tek_satir
+
+# Kullanıcıdan paragrafı al
+print("Lütfen paragrafı girin (bitirmek için ENTER tuşuna iki kez basın):")
+paragraf = ""
+while True:
+    satir = input()
+    if satir == "":
+        break
+    paragraf += " " + satir
+
+# Paragrafı tek satıra çevir
+tek_satir_paragraf = paragrafi_tek_satir_yap(paragraf)
+
+# Sonucu ekrana yazdır
+print("\nTek satır olarak çevrilmiş paragraf:")
+print(tek_satir_paragraf)
+
+# Sonucu panoya kopyala
+pyperclip.copy(tek_satir_paragraf)
+print("\nTek satır olarak çevrilmiş paragraf panoya kopyalandı.")
+
+# Dil seçeneği Türkçe olarak ayarlanıyor
+language = 'tr'
+
+# gTTS kullanarak metni sese dönüştür
+speech = gTTS(text=tek_satir_paragraf, lang=language, slow=False)
+
+# Geçici dosya olarak kaydet
+temp_file = os.path.join(os.path.expanduser("~/Desktop"), "temp.mp3")
+speech.save(temp_file)
+
+# Pydub kullanarak ses dosyasını yükle ve hızlandır
+sound = AudioSegment.from_file(temp_file)
+faster_sound = sound.speedup(playback_speed=1.5)  # Hızı %150 artır
+
+# Masaüstüne kaydet
+output_file = os.path.join(os.path.expanduser("~/Desktop"), "output.mp3")
+faster_sound.export(output_file, format="mp3")
+
+# Geçici dosyayı sil
+os.remove(temp_file)
+
+print(f"Ses dosyası masaüstüne kaydedildi: {output_file}")
+
+# Ses dosyasını çal (Windows için)
+os.system(f"start {output_file}")
