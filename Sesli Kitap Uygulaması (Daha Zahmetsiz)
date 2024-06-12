@@ -1,0 +1,45 @@
+from gtts import gTTS
+import os
+
+# Metni satır satır okuyarak sese çevirecek ve birleştirecek fonksiyon
+def metni_sese_cevir(metin, dosya_adi):
+    # Geçici olarak kaydedilecek MP3 dosyaları için bir liste
+    mp3_dosyalar = []
+
+    # Metni satır satır oku
+    satirlar = metin.split('\n')
+    for i, satir in enumerate(satirlar):
+        if satir.strip():  # Boş olmayan satırları işle
+            # Google Translate'in metni sese çevirmesi
+            tts = gTTS(satir, lang='tr')
+            temp_dosya_adi = f"temp_{i}.mp3"
+            tts.save(temp_dosya_adi)
+            mp3_dosyalar.append(temp_dosya_adi)
+
+    # Geçici dosyaları birleştirerek tek bir MP3 dosyası oluştur
+    with open(dosya_adi, "wb") as birlesik_dosya:
+        for mp3_dosya in mp3_dosyalar:
+            with open(mp3_dosya, "rb") as temp_dosya:
+                birlesik_dosya.write(temp_dosya.read())
+            os.remove(mp3_dosya)  # Geçici dosyayı sil
+
+# Kullanıcıdan metni al
+print("Lütfen metninizi girin (satırları ayırmak için Enter tuşuna basın, bitirmek için iki kez Enter tuşuna basın):")
+metin = ""
+while True:
+    satir = input()
+    if satir == "":
+        # Eğer iki kez Enter'a basılırsa döngüyü kır
+        if metin.endswith('\n\n'):
+            break
+    metin += satir + '\n'
+
+print("mp3 dosyanız hazırlanıyor...")
+
+# MP3 dosyasının kaydedileceği yol
+dosya_yolu = os.path.join(os.path.expanduser('~'), 'Desktop', 'jettir_baba.mp3')
+
+# Metni sese çevir ve dosyayı kaydet
+metni_sese_cevir(metin, dosya_yolu)
+
+print(f"Ses dosyası başarıyla {dosya_yolu} konumuna kaydedildi.")
