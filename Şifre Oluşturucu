@@ -1,0 +1,28 @@
+import random
+import string
+
+
+def generate_password(length):
+    # Şifrede kullanılacak karakter seti
+    characters = string.ascii_letters + string.digits + string.punctuation
+    # Rastgele şifre oluşturma
+    password = ''.join(random.choice(characters) for _ in range(length))
+    return password
+
+
+def main():
+    while True:
+        try:
+            length = int(input("Şifrenizin uzunluğunu girin: "))
+            if length <= 0:
+                print("Lütfen pozitif bir sayı girin.")
+                continue
+            password = generate_password(length)
+            print(f"Oluşturulan şifre: {password}")
+            break
+        except ValueError:
+            print("Lütfen geçerli bir sayı girin.")
+
+
+if __name__ == "__main__":
+    main()
