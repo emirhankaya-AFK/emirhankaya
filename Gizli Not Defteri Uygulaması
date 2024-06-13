@@ -1,0 +1,62 @@
+import tkinter as tk
+from tkinter import scrolledtext, messagebox
+
+
+class Notepad:
+    def __init__(self, root):
+        self.root = root
+        self.root.title("Not Defteri")
+        self.root.geometry("800x600")
+
+        self.file_name = "notes.txt"
+
+        self.text_area = scrolledtext.ScrolledText(self.root, wrap=tk.WORD)
+        self.text_area.pack(expand=True, fill='both')
+
+        self.menu_bar = tk.Menu(self.root)
+        self.root.config(menu=self.menu_bar)
+
+        self.file_menu = tk.Menu(self.menu_bar, tearoff=0)
+        self.menu_bar.add_cascade(label="Dosya", menu=self.file_menu)
+        self.file_menu.add_command(label="Sil", command=self.clear_notes)
+        self.file_menu.add_separator()
+        self.file_menu.add_command(label="Çık", command=self.quit_application)
+
+        self.help_menu = tk.Menu(self.menu_bar, tearoff=0)
+        self.menu_bar.add_cascade(label="Yardım", menu=self.help_menu)
+        self.help_menu.add_command(label="Hakkında", command=self.show_about)
+
+        self.load_notes()
+
+    def load_notes(self):
+        """Dosyadan notları okur ve ekrana yazar."""
+        try:
+            with open(self.file_name, "r") as file:
+                self.text_area.insert(tk.INSERT, file.read())
+        except FileNotFoundError:
+            pass  # Dosya bulunamazsa bir şey yapma
+
+    def save_notes(self):
+        """Notları dosyaya yazar."""
+        with open(self.file_name, "w") as file:
+            file.write(self.text_area.get(1.0, tk.END))
+
+    def clear_notes(self):
+        """Metin alanını temizler."""
+        self.text_area.delete(1.0, tk.END)
+
+    def quit_application(self):
+        """Uygulamadan çıkarken notları kaydeder."""
+        self.save_notes()
+        self.root.quit()
+
+    def show_about(self):
+        """Uygulama hakkında bilgi verir."""
+        messagebox.showinfo("Hakkında", "Not Defteri Uygulaması\nPython ile geliştirilmiştir.")
+
+
+if __name__ == "__main__":
+    root = tk.Tk()
+    notepad = Notepad(root)
+    root.protocol("WM_DELETE_WINDOW", notepad.quit_application)
+    root.mainloop()
