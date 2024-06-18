@@ -1,0 +1,55 @@
+import tkinter as tk
+import qrcode
+from io import BytesIO
+from tkinter import PhotoImage
+
+
+# QR kod üretme fonksiyonu
+def generate_qr(url):
+    qr = qrcode.QRCode(
+        version=1,
+        error_correction=qrcode.constants.ERROR_CORRECT_L,
+        box_size=10,
+        border=4,
+    )
+    qr.add_data(url)
+    qr.make(fit=True)
+
+    img = qr.make_image(fill_color="black", back_color="white")
+    return img
+
+
+# Butona basıldığında çalışacak fonksiyon
+def generate_and_display_qr():
+    url = url_entry.get()
+    qr_image = generate_qr(url)
+
+    # QR kodunu bir byte akışına kaydet
+    bio = BytesIO()
+    qr_image.save(bio)
+
+    # Tkinter ile görüntülenebilir hale getir
+    qr_code_img = PhotoImage(data=bio.getvalue())
+
+    qr_label.config(image=qr_code_img)
+    qr_label.image = qr_code_img  # Referansı saklamak için gereklidir
+
+
+# Tkinter arayüzü oluşturma
+root = tk.Tk()
+root.title("QR Kod Oluşturucu")
+
+# URL giriş alanı ve buton
+url_label = tk.Label(root, text="URL:")
+url_label.pack(pady=10)
+url_entry = tk.Entry(root, width=50)
+url_entry.pack(pady=5)
+
+generate_button = tk.Button(root, text="QR Kodu Oluştur", command=generate_and_display_qr)
+generate_button.pack(pady=10)
+
+# QR kodunu gösterecek alan
+qr_label = tk.Label(root)
+qr_label.pack(pady=10)
+
+root.mainloop()
