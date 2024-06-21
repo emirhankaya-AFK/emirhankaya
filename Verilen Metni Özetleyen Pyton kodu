@@ -1,0 +1,44 @@
+from sumy.parsers.plaintext import PlaintextParser
+from sumy.nlp.tokenizers import Tokenizer
+from sumy.summarizers.lsa import LsaSummarizer
+import nltk                    
+
+# NLTK punkt veri setini indir
+nltk.download('punkt')                    
+
+
+def metin_ozetle(metin, cumle_sayisi=3):
+    """                    
+    Verilen metni özetler.
+
+    Parametreler:
+    metin (str): Özetlenecek metin.
+    cumle_sayisi (int): Özetlenecek cümle sayısı. Varsayılan olarak 3.
+
+    Döndürülen değer:
+    str: Özetlenmiş metin.
+    """                    
+    parser = PlaintextParser.from_string(metin, Tokenizer("turkish"))
+    summarizer = LsaSummarizer()
+    ozet = summarizer(parser.document, cumle_sayisi)
+    ozet_metni = " ".join([str(cumle) for cumle in ozet])
+    return ozet_metni                    
+
+
+# Kullanıcıdan metin ve özet cümle sayısını alma
+metin = input("Lütfen özetlemek istediğiniz metni girin: ")
+cumle_sayisi_str = input("Lütfen özet cümle sayısını girin (varsayılan 3): ")
+
+# Özet cümle sayısını kontrol etme ve ayarlama
+try:
+    cumle_sayisi = int(cumle_sayisi_str)
+    if cumle_sayisi <= 0:
+        print("Geçersiz cümle sayısı. Varsayılan cümle sayısı (3) kullanılacak.")
+        cumle_sayisi = 3
+except ValueError:
+    print("Geçersiz giriş. Varsayılan cümle sayısı (3) kullanılacak.")
+    cumle_sayisi = 3
+
+# Metni özetleme
+ozet_metin = metin_ozetle(metin, cumle_sayisi)
+print("\nÖzetlenmiş metin:\n", ozet_metin)
