@@ -1,0 +1,26 @@
+import easyocr
+from PIL import Image
+import os
+
+# OCR okuyucu oluşturun
+reader = easyocr.Reader(['tr'])  # Türkçe dil desteği ile okuyucu oluşturma
+
+# Masaüstündeki "mahmut" klasörünün yolunu belirtin
+folder_path = os.path.join(os.path.expanduser('~'), 'Desktop', 'mahmut')
+
+# Klasördeki resim dosyalarını alın
+image_files = [f for f in os.listdir(folder_path) if
+               f.lower().endswith(('.png', '.jpg', '.jpeg', '.tiff', '.bmp', '.gif'))]
+
+# Resim dosyalarındaki yazıları okuyun ve çıktı olarak yazdırın
+for index, image_file in enumerate(image_files):
+    image_path = os.path.join(folder_path, image_file)
+
+    # OCR ile resimdeki yazıyı okuyun
+    results = reader.readtext(image_path)
+
+    # Sonucu yazdırın
+    print(f"{index + 1}. resim ({image_file}) - İçerik:")
+    for result in results:
+        print(result[1])  # result[1] OCR ile okunan metni içerir
+    print("\n")
