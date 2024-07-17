@@ -1,0 +1,51 @@
+import time
+import random
+
+
+def generate_words(num_words):
+    sample_words = [
+        "örnek", "kelime", "yazma", "testi", "python",
+        "geliştirme", "uygulama", "kodlama", "programlama", "sistem",
+        "teknoloji", "bilgisayar", "internet", "veri", "algoritma",
+        "ağ", "yazılım", "donanım", "güvenlik", "şifreleme",
+        "analiz", "matematik", "istatistik", "robot", "otomasyon"
+    ]
+    return random.sample(sample_words, min(num_words, len(sample_words)))
+
+
+def speed_test():
+    num_words = int(input("Kaç adet kelime hazırlanmasını istersiniz? "))
+    time_limit = int(input("Kaç saniye süre olsun? "))
+
+    word_list = generate_words(num_words)
+    correct_letters = 0
+    incorrect_letters = 0
+    start_time = time.time()
+
+    print("Yazmanız gereken kelimeler:")
+    for word in word_list:
+        print(word)
+
+    for word in word_list:
+        print(f"\n'{word}' kelimesini yazın:")
+
+        user_input = input("Yazmaya başlayın:\n")
+
+        for i in range(min(len(word), len(user_input))):
+            if user_input[i] == word[i]:
+                correct_letters += 1
+            else:
+                incorrect_letters += 1
+
+        # Süre kontrolü
+        elapsed_time = time.time() - start_time
+        if elapsed_time > time_limit:
+            print("Süre doldu!")
+            break
+
+    print(f"\nDoğru harf sayısı: {correct_letters}")
+    print(f"Yanlış harf sayısı: {incorrect_letters}")
+
+
+if __name__ == "__main__":
+    speed_test()
