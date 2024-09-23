@@ -1,0 +1,29 @@
+import pyperclip  # Kopyalama işlemi için kullanıyoruz
+import keyboard   # Klavye tuşlarını algılamak için
+
+# Paragrafı satır satır bir diziye ayırıyoruz
+paragraf = """
+"""
+
+# Satırları liste haline getiriyoruz
+satirlar = paragraf.splitlines()
+
+# Satırları sırasıyla kopyalamak için bir index tutuyoruz
+satir_index = 0
+
+# Fonksiyon: q'ya basıldığında sıradaki satırı kopyala
+def kopyala():
+    global satir_index
+    if satir_index < len(satirlar):
+        pyperclip.copy(satirlar[satir_index])
+        print(f"Kopyalandı: {satirlar[satir_index]}")
+        satir_index += 1
+    else:
+        print("Tüm satırlar kopyalandı.")
+
+# Program çalışırken 'q' harfine basılmasını dinler
+print("Satırları kopyalamak için 'q' harfine basın.")
+keyboard.add_hotkey('q', kopyala)
+
+# Programı sonsuz döngüde tutar, q'ya basıldıkça çalışır
+keyboard.wait('esc')  # Programı kapatmak için 'esc' tuşuna basın
