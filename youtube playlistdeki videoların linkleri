@@ -1,0 +1,30 @@
+from pytube import Playlist
+import os
+
+# Oynatma listesi URL'si
+playlist_url = 'https://www.youtube.com/playlist?list=PLplKY2dp5YqBMPiDXTq0NCWrLl9rS7u_o'
+
+# Playlist'i oluştur
+playlist = Playlist(playlist_url)
+
+
+# Video URL'lerini not defterine kaydetme fonksiyonu
+def save_to_file(video_urls):
+    desktop_path = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop')
+    file_path = os.path.join(desktop_path, 'youtube_links.txt')
+
+    with open(file_path, 'w') as file:
+        for url in video_urls:
+            file.write(f"{url}\n")
+
+    print(f"Tüm linkler '{file_path}' dosyasına kaydedildi.")
+
+
+# Video URL'lerini listele
+video_urls = playlist.video_urls
+
+# Toplam video sayısını göster
+print(f"Oynatma listesinde {len(video_urls)} video var.")
+
+# Video linklerini not defterine kaydet
+save_to_file(video_urls)
