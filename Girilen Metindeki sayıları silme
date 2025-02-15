@@ -1,0 +1,34 @@
+import re
+
+# Paragrafını buraya yapıştır
+paragraf = """
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+"""
+
+# Sayıları kaldır
+temiz_paragraf = re.sub(r'\d+', '', paragraf)
+
+print(temiz_paragraf)
