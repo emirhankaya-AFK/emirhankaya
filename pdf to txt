@@ -1,0 +1,31 @@
+import fitz  # PyMuPDF
+import os
+
+
+def convert_pdf_from_folder(folder_path, output_name="çötay.txt"):
+    desktop_path = os.path.join(os.path.expanduser("~"), "Desktop")  # Masaüstü yolu
+    output_path = os.path.join(desktop_path, output_name)
+
+    # Mahmut klasöründeki ilk PDF dosyasını bul
+    pdf_files = [f for f in os.listdir(folder_path) if f.lower().endswith(".pdf")]
+
+    if not pdf_files:
+        print("Klasörde PDF bulunamadı.")
+        return
+
+    pdf_path = os.path.join(folder_path, pdf_files[0])  # İlk PDF'yi seç
+    print(f"Dönüştürülen PDF: {pdf_path}")
+
+    # PDF'yi aç ve metni al
+    doc = fitz.open(pdf_path)
+    text = "\n".join([page.get_text() for page in doc])
+
+    # Metni dosyaya kaydet
+    with open(output_path, "w", encoding="utf-8") as f:
+        f.write(text)
+
+    print(f"Metin başarıyla '{output_path}' dosyasına kaydedildi.")
+
+
+# Kullanım
+convert_pdf_from_folder("mahmut")  # "mahmut" klasöründeki ilk PDF'i çevir
