@@ -1,0 +1,308 @@
+[
+    {
+        "id": 1,
+        "ad": "Suc ve Ceza",
+        "yazar": "Fyodor Dostoyevski",
+        "durum": "odunc_verildi"
+    },
+    {
+        "id": 2,
+        "ad": "Sefiller",
+        "yazar": "Victor Hugo",
+        "durum": "odunc_verildi"
+    },
+    {
+        "id": 3,
+        "ad": "1984",
+        "yazar": "George Orwell",
+        "durum": "rafta"
+    },
+    {
+        "id": 4,
+        "ad": "Hayvan Ciftligi",
+        "yazar": "George Orwell",
+        "durum": "rafta"
+    },
+    {
+        "id": 5,
+        "ad": "Kucuk Prens",
+        "yazar": "Antoine de Saint-Exupery",
+        "durum": "rafta"
+    },
+    {
+        "id": 6,
+        "ad": "Simyaci",
+        "yazar": "Paulo Coelho",
+        "durum": "odunc_verildi"
+    },
+    {
+        "id": 7,
+        "ad": "Satranc",
+        "yazar": "Stefan Zweig",
+        "durum": "rafta"
+    },
+    {
+        "id": 8,
+        "ad": "Donusum",
+        "yazar": "Franz Kafka",
+        "durum": "rafta"
+    },
+    {
+        "id": 9,
+        "ad": "Yabanci",
+        "yazar": "Albert Camus",
+        "durum": "rafta"
+    },
+    {
+        "id": 10,
+        "ad": "Kurk Mantolu Madonna",
+        "yazar": "Sabahattin Ali",
+        "durum": "odunc_verildi"
+    },
+    {
+        "id": 11,
+        "ad": "Icimizdeki Seytan",
+        "yazar": "Sabahattin Ali",
+        "durum": "rafta"
+    },
+    {
+        "id": 12,
+        "ad": "Kuyucakli Yusuf",
+        "yazar": "Sabahattin Ali",
+        "durum": "rafta"
+    },
+    {
+        "id": 13,
+        "ad": "Tutunamayanlar",
+        "yazar": "Oguz Atay",
+        "durum": "rafta"
+    },
+    {
+        "id": 14,
+        "ad": "Tehlikeli Oyunlar",
+        "yazar": "Oguz Atay",
+        "durum": "odunc_verildi"
+    },
+    {
+        "id": 15,
+        "ad": "Saatleri Ayarlama Enstitusu",
+        "yazar": "Ahmet Hamdi Tanpinar",
+        "durum": "rafta"
+    },
+    {
+        "id": 16,
+        "ad": "Huzur",
+        "yazar": "Ahmet Hamdi Tanpinar",
+        "durum": "rafta"
+    },
+    {
+        "id": 17,
+        "ad": "Ince Memed 1",
+        "yazar": "Yasar Kemal",
+        "durum": "rafta"
+    },
+    {
+        "id": 18,
+        "ad": "Ince Memed 2",
+        "yazar": "Yasar Kemal",
+        "durum": "rafta"
+    },
+    {
+        "id": 19,
+        "ad": "Calikusu",
+        "yazar": "Resat Nuri Guntekin",
+        "durum": "odunc_verildi"
+    },
+    {
+        "id": 20,
+        "ad": "Aylak Adam",
+        "yazar": "Yusuf Atilgan",
+        "durum": "rafta"
+    },
+    {
+        "id": 21,
+        "ad": "Anayurt Oteli",
+        "yazar": "Yusuf Atilgan",
+        "durum": "rafta"
+    },
+    {
+        "id": 22,
+        "ad": "Kara Kitap",
+        "yazar": "Orhan Pamuk",
+        "durum": "rafta"
+    },
+    {
+        "id": 23,
+        "ad": "Benim Adim Kirmizi",
+        "yazar": "Orhan Pamuk",
+        "durum": "odunc_verildi"
+    },
+    {
+        "id": 24,
+        "ad": "Masumiyet Muzesi",
+        "yazar": "Orhan Pamuk",
+        "durum": "rafta"
+    },
+    {
+        "id": 25,
+        "ad": "Puslu Kitalar Atlasi",
+        "yazar": "Ihsan Oktay Anar",
+        "durum": "rafta"
+    },
+    {
+        "id": 26,
+        "ad": "Suskunlar",
+        "yazar": "Ihsan Oktay Anar",
+        "durum": "rafta"
+    },
+    {
+        "id": 27,
+        "ad": "Yedinci Gun",
+        "yazar": "Ihsan Oktay Anar",
+        "durum": "rafta"
+    },
+    {
+        "id": 28,
+        "ad": "Nutuk",
+        "yazar": "Mustafa Kemal Ataturk",
+        "durum": "rafta"
+    },
+    {
+        "id": 29,
+        "ad": "Sinekli Bakkal",
+        "yazar": "Halide Edib Adivar",
+        "durum": "odunc_verildi"
+    },
+    {
+        "id": 30,
+        "ad": "Eylul",
+        "yazar": "Mehmet Rauf",
+        "durum": "rafta"
+    },
+    {
+        "id": 31,
+        "ad": "Mai ve Siyah",
+        "yazar": "Halit Ziya Usakligil",
+        "durum": "rafta"
+    },
+    {
+        "id": 32,
+        "ad": "Ask-i Memnu",
+        "yazar": "Halit Ziya Usakligil",
+        "durum": "rafta"
+    },
+    {
+        "id": 33,
+        "ad": "Serguzeşt",
+        "yazar": "Samipasazade Sezai",
+        "durum": "rafta"
+    },
+    {
+        "id": 34,
+        "ad": "Araba Sevdasi",
+        "yazar": "Recaizade Mahmut Ekrem",
+        "durum": "rafta"
+    },
+    {
+        "id": 35,
+        "ad": "Vadideki Zambak",
+        "yazar": "Honore de Balzac",
+        "durum": "rafta"
+    },
+    {
+        "id": 36,
+        "ad": "Goriot Baba",
+        "yazar": "Honore de Balzac",
+        "durum": "odunc_verildi"
+    },
+    {
+        "id": 37,
+        "ad": "Kirmizi ve Siyah",
+        "yazar": "Stendhal",
+        "durum": "rafta"
+    },
+    {
+        "id": 38,
+        "ad": "Anna Karenina",
+        "yazar": "Lev Tolstoy",
+        "durum": "rafta"
+    },
+    {
+        "id": 39,
+        "ad": "Savas ve Baris",
+        "yazar": "Lev Tolstoy",
+        "durum": "odunc_verildi"
+    },
+    {
+        "id": 40,
+        "ad": "Babalar ve Ogullar",
+        "yazar": "Ivan Turgenyev",
+        "durum": "rafta"
+    },
+    {
+        "id": 41,
+        "ad": "Olu Canlar",
+        "yazar": "Nikolay Gogol",
+        "durum": "rafta"
+    },
+    {
+        "id": 42,
+        "ad": "Palto",
+        "yazar": "Nikolay Gogol",
+        "durum": "rafta"
+    },
+    {
+        "id": 43,
+        "ad": "Kumarbaz",
+        "yazar": "Fyodor Dostoyevski",
+        "durum": "odunc_verildi"
+    },
+    {
+        "id": 44,
+        "ad": "Yeraltindan Notlar",
+        "yazar": "Fyodor Dostoyevski",
+        "durum": "rafta"
+    },
+    {
+        "id": 45,
+        "ad": "Karamazov Kardesler",
+        "yazar": "Fyodor Dostoyevski",
+        "durum": "rafta"
+    },
+    {
+        "id": 46,
+        "ad": "Faust",
+        "yazar": "Johann Wolfgang von Goethe",
+        "durum": "rafta"
+    },
+    {
+        "id": 47,
+        "ad": "Genc Werther'in Acilari",
+        "yazar": "Johann Wolfgang von Goethe",
+        "durum": "rafta"
+    },
+    {
+        "id": 48,
+        "ad": "Dava",
+        "yazar": "Franz Kafka",
+        "durum": "odunc_verildi"
+    },
+    {
+        "id": 49,
+        "ad": "Sato",
+        "yazar": "Franz Kafka",
+        "durum": "rafta"
+    },
+    {
+        "id": 50,
+        "ad": "Ucurtma Avcisi",
+        "yazar": "Khaled Hosseini",
+        "durum": "rafta"
+    },
+    {
+        "id": 51,
+        "ad": "mahmut",
+        "yazar": "mahmutt",
+        "durum": "rafta"
+    }
+]
