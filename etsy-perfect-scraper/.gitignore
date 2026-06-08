@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+.vscode/
+.idea/
+/g45_Analysis/
+/k385z1o7x990id8m_Analysis/
+*.webm
+*.mp4
+/output/
