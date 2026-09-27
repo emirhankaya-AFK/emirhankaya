@@ -10,6 +10,13 @@ Electrical & Electronics Engineering student building practical Python, AI, comp
 
 I also work with FastAPI, PostgreSQL, Docker, RAG applications, data preprocessing, object detection/tracking and automation workflows.
 
+## Latest data science projects
+
+- [Air Quality Sensor Calibration](https://github.com/emirhankaya-AFK/air-quality-sensor-calibration) — temporal validation, conformal uncertainty and sensor drift
+- [Semiconductor Yield Prediction](https://github.com/emirhankaya-AFK/semiconductor-yield-prediction) — rare-event manufacturing quality prediction
+- [NASA Turbofan RUL Prediction](https://github.com/emirhankaya-AFK/nasa-turbofan-rul-prediction) — remaining useful life estimation with classical ML and GRU
+- [Motor Bearing Fault Diagnosis](https://github.com/emirhankaya-AFK/motor-bearing-fault-diagnosis) — FFT, wavelets and cross-load fault classification
+
 ## Featured projects
 
 ### [YOLO Buoy Detection](https://github.com/emirhankaya-AFK/emirhankaya/tree/main/yolo-buoy-detection)
