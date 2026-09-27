@@ -1,0 +1,30 @@
+{
+  "dataset": "NASA C-MAPSS FD001",
+  "target": "piecewise-linear RUL capped at 125 cycles",
+  "validation_split": "20% complete engines held out with GroupShuffleSplit",
+  "train_engines": 100,
+  "test_engines": 100,
+  "validation_metrics": {
+    "mae": 10.0308,
+    "rmse": 15.025,
+    "nasa_score": 19128.5498,
+    "late_prediction_rate": 0.4521
+  },
+  "official_test_metrics": {
+    "mae": 13.9045,
+    "rmse": 18.9001,
+    "nasa_score": 714.0779,
+    "late_prediction_rate": 0.5
+  },
+  "median_baseline_test_metrics": {
+    "mae": 35.9,
+    "rmse": 42.8567,
+    "nasa_score": 31046.1685,
+    "late_prediction_rate": 0.5
+  },
+  "conformal_interval": {
+    "nominal_coverage": 0.9,
+    "radius_cycles": 26.895,
+    "official_test_coverage": 0.86
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "split": "complete engines separated; final official test trajectory per engine",
+  "sequence_length": 30,
+  "epochs_completed": 22,
+  "validation_mae": 8.4311,
+  "official_test_mae": 11.1476,
+  "official_test_rmse": 15.1924
+}

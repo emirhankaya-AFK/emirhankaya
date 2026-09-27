@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nasa-turbofan-rul-prediction"
+version = "0.1.0"
+description = "Leakage-safe remaining useful life prediction on NASA C-MAPSS FD001."
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [{ name = "Emirhan Kaya" }]
+dependencies = [
+  "joblib>=1.4",
+  "matplotlib>=3.9",
+  "numpy>=2.0",
+  "pandas>=2.2",
+  "scikit-learn>=1.5",
+]
+
+[project.optional-dependencies]
+sequence = ["torch>=2.5"]
+dev = ["pytest>=8.3", "ruff==0.12.10"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

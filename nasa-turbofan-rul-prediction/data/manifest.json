@@ -1,0 +1,19 @@
+{
+  "source": "https://data.nasa.gov/docs/legacy/CMAPSSData.zip",
+  "sha256": "74bef434a34db25c7bf72e668ea4cd52afe5f2cf8e44367c55a82bfd91a5a34f",
+  "files": [
+    "RUL_FD001.txt",
+    "RUL_FD002.txt",
+    "RUL_FD003.txt",
+    "RUL_FD004.txt",
+    "readme.txt",
+    "test_FD001.txt",
+    "test_FD002.txt",
+    "test_FD003.txt",
+    "test_FD004.txt",
+    "train_FD001.txt",
+    "train_FD002.txt",
+    "train_FD003.txt",
+    "train_FD004.txt"
+  ]
+}

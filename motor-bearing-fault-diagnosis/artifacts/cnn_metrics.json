@@ -1,0 +1,46 @@
+{
+  "split": "train loads 0-1 HP; validation 2 HP; untouched test 3 HP",
+  "epochs_completed": 10,
+  "validation_macro_f1": 1.0,
+  "test_accuracy": 1.0,
+  "test_macro_f1": 1.0,
+  "classification_report": {
+    "normal": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 237.0
+    },
+    "inner_race": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 60.0
+    },
+    "ball": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 59.0
+    },
+    "outer_race": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 59.0
+    },
+    "accuracy": 1.0,
+    "macro avg": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 415.0
+    },
+    "weighted avg": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 415.0
+    }
+  }
+}

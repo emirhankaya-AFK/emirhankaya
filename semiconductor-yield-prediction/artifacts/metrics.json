@@ -1,0 +1,90 @@
+{
+  "dataset": {
+    "samples": 1567,
+    "raw_features": 590,
+    "selected_features": 444,
+    "failure_rate": 0.06636885768985322
+  },
+  "split": {
+    "train": {
+      "samples": 940,
+      "failures": 76
+    },
+    "validation": {
+      "samples": 313,
+      "failures": 11
+    },
+    "test": {
+      "samples": 314,
+      "failures": 17
+    }
+  },
+  "threshold_policy": {
+    "source": "five_fold_out_of_fold_development_predictions",
+    "minimum_development_recall": 0.5,
+    "false_negative_cost": 10,
+    "false_positive_cost": 1
+  },
+  "development_oof": {
+    "samples": 1253,
+    "failures": 87,
+    "threshold": 0.19378439200621145,
+    "pr_auc": 0.12310796684845055,
+    "roc_auc": 0.6281224739259872,
+    "balanced_accuracy": 0.6062183316574989,
+    "recall": 0.5057471264367817,
+    "specificity": 0.7066895368782161,
+    "precision": 0.11398963730569948,
+    "f1": 0.18604651162790697,
+    "brier": 0.1358825977917059,
+    "false_positives": 342,
+    "false_negatives": 43,
+    "true_positives": 44,
+    "true_negatives": 824,
+    "weighted_cost": 772.0
+  },
+  "test": {
+    "samples": 314,
+    "failures": 17,
+    "threshold": 0.19378439200621145,
+    "pr_auc": 0.22693441913721402,
+    "roc_auc": 0.7898593780946722,
+    "balanced_accuracy": 0.6141810259457319,
+    "recall": 0.35294117647058826,
+    "specificity": 0.8754208754208754,
+    "precision": 0.13953488372093023,
+    "f1": 0.2,
+    "brier": 0.06300205934873883,
+    "false_positives": 37,
+    "false_negatives": 11,
+    "true_positives": 6,
+    "true_negatives": 260,
+    "weighted_cost": 147.0,
+    "pr_auc_ci_95": [
+      0.0984750934950481,
+      0.4614588422455046
+    ],
+    "roc_auc_ci_95": [
+      0.6885166582631967,
+      0.881606033717835
+    ]
+  },
+  "constant_prevalence_baseline": {
+    "samples": 314,
+    "failures": 17,
+    "threshold": 0.5,
+    "pr_auc": 0.054140127388535034,
+    "roc_auc": 0.5,
+    "balanced_accuracy": 0.5,
+    "recall": 0.0,
+    "specificity": 1.0,
+    "precision": 0.0,
+    "f1": 0.0,
+    "brier": 0.05144285695664376,
+    "false_positives": 0,
+    "false_negatives": 17,
+    "true_positives": 0,
+    "true_negatives": 297,
+    "weighted_cost": 170.0
+  }
+}
