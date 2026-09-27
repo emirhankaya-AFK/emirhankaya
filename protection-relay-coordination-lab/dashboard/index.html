@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Protection Relay Coordination Lab</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <main>
+    <header>
+      <p class="eyebrow">RADIAL FEEDER STUDY</p>
+      <h1>Protection relay coordination</h1>
+      <p>Compare IEC inverse-time relay operation and grading margins from load end to source.</p>
+    </header>
+
+    <section class="controls">
+      <label for="preset">Worked case</label>
+      <select id="preset">
+        <option value="coordinated">Coordinated feeder</option>
+        <option value="miscoordinated">Insufficient grading margin</option>
+      </select>
+      <button id="run">Run study</button>
+    </section>
+
+    <section class="summary">
+      <article><span>Study status</span><strong id="status">—</strong></article>
+      <article><span>Required margin</span><strong id="required">—</strong></article>
+      <article><span>Relay count</span><strong id="count">—</strong></article>
+    </section>
+
+    <section class="panel">
+      <h2>Operating sequence</h2>
+      <div id="timeline"></div>
+    </section>
+
+    <section class="panel">
+      <h2>Coordination checks</h2>
+      <table>
+        <thead><tr><th>Pair</th><th>Margin</th><th>Result</th><th>Engineering note</th></tr></thead>
+        <tbody id="pairs"></tbody>
+      </table>
+    </section>
+
+    <footer>Calculation aid only. Final settings require a complete protection study and engineer review.</footer>
+  </main>
+  <script src="/static/app.js"></script>
+</body>
+</html>

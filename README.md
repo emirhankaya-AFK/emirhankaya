@@ -17,6 +17,14 @@ I also work with FastAPI, PostgreSQL, Docker, RAG applications, data preprocessi
 - [NASA Turbofan RUL Prediction](https://github.com/emirhankaya-AFK/nasa-turbofan-rul-prediction) — remaining useful life estimation with classical ML and GRU
 - [Motor Bearing Fault Diagnosis](https://github.com/emirhankaya-AFK/motor-bearing-fault-diagnosis) — FFT, wavelets and cross-load fault classification
 
+## Additional complete projects in this repository
+
+- Electrical engineering: `protection-relay-coordination-lab`, `power-quality-disturbance-analyzer`, `elektrik-tuketim-planlayici`
+- Data and ML: `fraud-detection-ml-pipeline`, `quantitative-portfolio-risk-engine`, `pcb-defect-detection-platform`
+- Backend and infrastructure: `industrial-iot-telemetry-platform`, `document-intelligence-pipeline`, `production-rag-assistant`
+- Engineering systems: `atlas-vector-hnsw-engine`, `agentic-code-security-sentinel`, `yolo-vision-api`
+- Automation: `ai-resume-document-analyzer`, `job-tracker-automation`, `etsy-data-pipeline`
+
 ## Featured projects
 
 ### [YOLO Buoy Detection](https://github.com/emirhankaya-AFK/emirhankaya/tree/main/yolo-buoy-detection)

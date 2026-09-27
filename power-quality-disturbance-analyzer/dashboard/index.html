@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Power Quality Disturbance Analyzer (PQDA)</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <!-- Plotly.js for interactive engineering visualizations -->
+  <script src="https://cdn.plot.ly/plotly-2.30.0.min.js"></script>
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header -->
+    <header class="navbar">
+      <div class="brand">
+        <div class="logo-icon">⚡</div>
+        <div>
+          <h1>Power Quality Disturbance Analyzer</h1>
+          <p class="subtitle">Synthetic 3-Phase Waveform Generation & DSP Disturbance Classification</p>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-primary">EEE Student Portfolio</span>
+        <span class="badge badge-warning">Educational Heuristic Prototype</span>
+      </div>
+    </header>
+
+    <!-- Main Content Grid -->
+    <main class="dashboard-grid">
+      <!-- Sidebar Controls -->
+      <aside class="sidebar card">
+        <h2>Control Panel</h2>
+        
+        <div class="form-group">
+          <label for="preset-select">Disturbance Preset</label>
+          <select id="preset-select" class="form-control">
+            <option value="sag" selected>Voltage Sag (50% on Phase A)</option>
+            <option value="swell">Voltage Swell (135% on Phase B)</option>
+            <option value="interruption">Three-Phase Interruption (98% drop)</option>
+            <option value="harmonics">Harmonic Distortion (3rd, 5th, 7th)</option>
+            <option value="unbalance">Phase Unbalance (Single-phase load)</option>
+            <option value="clean">Clean Balanced Sinusoid</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="freq-input">Frequency (Hz)</label>
+          <input type="number" id="freq-input" class="form-control" value="50.0" step="1.0" min="10" max="400">
+        </div>
+
+        <div class="form-group">
+          <label for="voltage-input">Nominal RMS Voltage (V)</label>
+          <input type="number" id="voltage-input" class="form-control" value="230.0" step="5.0" min="50" max="1000">
+        </div>
+
+        <div class="form-group">
+          <label for="duration-input">Duration (Seconds)</label>
+          <input type="number" id="duration-input" class="form-control" value="1.0" step="0.1" min="0.2" max="5.0">
+        </div>
+
+        <div class="form-group">
+          <label for="snr-select">Noise (AWGN SNR)</label>
+          <select id="snr-select" class="form-control">
+            <option value="none" selected>Clean (No Noise)</option>
+            <option value="40">Mild Noise (40 dB SNR)</option>
+            <option value="30">Moderate Noise (30 dB SNR)</option>
+            <option value="20">Severe Noise (20 dB SNR)</option>
+          </select>
+        </div>
+
+        <button id="btn-run" class="btn btn-primary btn-block">Run DSP Analysis</button>
+
+        <div class="dsp-info">
+          <h3>Algorithmic Pipeline</h3>
+          <ul>
+            <li><strong>RMS:</strong> 1-cycle sliding window</li>
+            <li><strong>FFT:</strong> <code>scipy.fft.rfft</code> spectrum</li>
+            <li><strong>Unbalance:</strong> Fortescue symmetrical matrix</li>
+            <li><strong>Sampling:</strong> 6,400 Hz (128 pts/cycle)</li>
+          </ul>
+        </div>
+      </aside>
+
+      <!-- Center & Right Visualization Canvas -->
+      <section class="content-area">
+        <!-- KPI Cards -->
+        <div class="kpi-row">
+          <div class="kpi-card card">
+            <span class="kpi-label">Detected Events</span>
+            <span id="kpi-events" class="kpi-value text-accent">-</span>
+          </div>
+          <div class="kpi-card card">
+            <span class="kpi-label">Avg Network THD</span>
+            <span id="kpi-thd" class="kpi-value text-warning">- %</span>
+          </div>
+          <div class="kpi-card card">
+            <span class="kpi-label">Voltage Unbalance (VUF)</span>
+            <span id="kpi-vuf" class="kpi-value text-info">- %</span>
+          </div>
+          <div class="kpi-card card">
+            <span class="kpi-label">Positive Sequence (V1)</span>
+            <span id="kpi-v1" class="kpi-value text-success">- V</span>
+          </div>
+        </div>
+
+        <!-- Waveform & RMS Charts -->
+        <div class="charts-grid">
+          <div class="card chart-card">
+            <div class="card-header">
+              <h3>Instantaneous 3-Phase Voltages (Va, Vb, Vc)</h3>
+            </div>
+            <div id="plot-waveform" class="plot-container"></div>
+          </div>
+
+          <div class="card chart-card">
+            <div class="card-header">
+              <h3>Sliding True-RMS Profile (Per-Unit)</h3>
+              <span class="threshold-legend">Normal Band: 0.90 - 1.10 pu</span>
+            </div>
+            <div id="plot-rms" class="plot-container"></div>
+          </div>
+        </div>
+
+        <!-- Harmonics & Symmetrical Components Grid -->
+        <div class="charts-grid">
+          <div class="card chart-card">
+            <div class="card-header">
+              <h3>Harmonic Spectrum (Phase A, B, C)</h3>
+            </div>
+            <div id="plot-harmonics" class="plot-container"></div>
+          </div>
+
+          <div class="card chart-card">
+            <div class="card-header">
+              <h3>Fortescue Symmetrical Components (V0, V1, V2)</h3>
+            </div>
+            <div id="plot-sequences" class="plot-container"></div>
+          </div>
+        </div>
+
+        <!-- Detected Events Table -->
+        <div class="card table-card">
+          <div class="card-header">
+            <h3>Event Detection & Classification Log</h3>
+          </div>
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Disturbance Class</th>
+                  <th>Phase</th>
+                  <th>Start Time (s)</th>
+                  <th>End Time (s)</th>
+                  <th>Duration (ms)</th>
+                  <th>Severity</th>
+                  <th>Diagnostic Details</th>
+                </tr>
+              </thead>
+              <tbody id="events-table-body">
+                <tr>
+                  <td colspan="7" class="text-muted text-center">No simulation run yet. Click "Run DSP Analysis".</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Methodology & Engineering Disclaimer -->
+        <div class="card disclaimer-card">
+          <h4>Engineering Integrity & Transparent Methodology</h4>
+          <p>
+            This tool is an <strong>educational signal processing prototype</strong> developed to demonstrate digital signal processing (DSP)
+            and software architecture principles for electrical power systems. Event thresholds (Sag: &lt;0.9 pu, Swell: &gt;1.1 pu, Interruption: &lt;0.1 pu,
+            THD: &ge;5.0%, VUF: &ge;2.0%) are heuristic guidelines inspired by IEEE 1159 and IEC literature.
+            It does <strong>not</strong> claim hardware-grade certification under IEC 61000-4-30 Class A, UTC/GPS clock synchronization, or real instrument transformer calibration.
+          </p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>FraudShield — Transaction Review</title>
+  <style>
+    :root{font-family:Inter,system-ui,sans-serif;color:#e8edf5;background:#07111f}*{box-sizing:border-box}
+    body{margin:0;background:radial-gradient(circle at 80% 0,#17345f 0,transparent 35%),#07111f;min-height:100vh}
+    main{max-width:1080px;margin:auto;padding:44px 24px}.tag{color:#5eead4;font-weight:700;letter-spacing:.12em;font-size:12px}
+    h1{font-size:42px;margin:10px 0 8px}.sub{color:#94a3b8;margin-bottom:30px}.grid{display:grid;grid-template-columns:1.4fr .8fr;gap:22px}
+    .card{background:#0d1b2dcc;border:1px solid #22334b;border-radius:18px;padding:24px;box-shadow:0 20px 70px #0004}
+    form{display:grid;grid-template-columns:1fr 1fr;gap:15px}label{color:#a8b5c7;font-size:13px}input{width:100%;margin-top:6px;padding:11px;border-radius:9px;border:1px solid #30435d;background:#091524;color:white}
+    button{grid-column:1/-1;padding:14px;border:0;border-radius:10px;background:#14b8a6;color:#031413;font-weight:800;cursor:pointer}
+    .score{font-size:52px;font-weight:800;margin:18px 0 4px}.decision{display:inline-block;padding:7px 12px;border-radius:999px;background:#173b38;color:#5eead4;font-weight:700}
+    li{margin:13px 0;color:#bdc8d8}.foot{color:#64748b;font-size:12px;margin-top:28px}@media(max-width:760px){.grid{grid-template-columns:1fr}h1{font-size:32px}}
+  </style>
+</head>
+<body><main><div class="tag">COST-SENSITIVE MACHINE LEARNING</div><h1>FraudShield</h1><div class="sub">Explainable card transaction screening using synthetic data.</div>
+<div class="grid"><section class="card"><h2>Transaction details</h2><form id="form">
+<label>Amount<input name="amount" type="number" value="850" step="0.01"></label><label>Hour<input name="hour" type="number" value="2"></label>
+<label>Account age (days)<input name="account_age_days" type="number" value="120"></label><label>Distance from home (km)<input name="distance_from_home_km" type="number" value="145"></label>
+<label>Transactions in 24h<input name="transactions_last_24h" type="number" value="11"></label><label>Merchant risk (0–1)<input name="merchant_risk_score" type="number" value="0.72" step="0.01"></label>
+<label>Foreign? (0/1)<input name="is_foreign" type="number" value="1"></label><label>Card present? (0/1)<input name="is_card_present" type="number" value="0"></label>
+<button>Score transaction</button></form></section><aside class="card"><div class="tag">MODEL DECISION</div><div class="score" id="score">—</div><div class="decision" id="decision">Waiting for input</div><h3>Top risk signals</h3><ul id="signals"><li>Run a score to see factors</li></ul><p class="foot">Decision support only · Human review required · No real customer data</p></aside></div></main>
+<script>document.querySelector('#form').onsubmit=async(e)=>{e.preventDefault();let o=Object.fromEntries(new FormData(e.target));for(let k in o)o[k]=Number(o[k]);let r=await fetch('/predict',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(o)});let d=await r.json();score.textContent=(d.fraud_probability*100).toFixed(1)+'%';decision.textContent=d.decision.toUpperCase();signals.innerHTML=d.top_risk_signals.map(x=>`<li>${x.factor} — ${(x.risk_contribution*100).toFixed(0)}%</li>`).join('')}</script></body></html>
+

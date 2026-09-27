@@ -1,0 +1,10 @@
+__pycache__/
+.pytest_cache/
+.venv/
+*.py[cod]
+.coverage
+.DS_Store
+.edge-profile/
+server.*.log
+data/*.csv
+artifacts/*.joblib

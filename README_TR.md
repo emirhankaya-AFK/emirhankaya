@@ -25,6 +25,14 @@ Ek araçlar: OpenCV, YOLO, REST API, Flask, Playwright, Selenium, Beautiful Soup
 - [Job Tracker & Automation](https://github.com/emirhankaya-AFK/job-tracker-automation)
 - [Production RAG Assistant](https://github.com/emirhankaya-AFK/production-rag-assistant)
 
+## Bu depoya eklenen diğer kapsamlı projeler
+
+- Elektrik-elektronik: `protection-relay-coordination-lab`, `power-quality-disturbance-analyzer`, `elektrik-tuketim-planlayici`
+- Veri ve makine öğrenmesi: `fraud-detection-ml-pipeline`, `quantitative-portfolio-risk-engine`, `pcb-defect-detection-platform`
+- Backend ve altyapı: `industrial-iot-telemetry-platform`, `document-intelligence-pipeline`, `production-rag-assistant`
+- Mühendislik sistemleri: `atlas-vector-hnsw-engine`, `agentic-code-security-sentinel`, `yolo-vision-api`
+- Otomasyon: `ai-resume-document-analyzer`, `job-tracker-automation`, `etsy-data-pipeline`
+
 ## Öne çıkan konular
 
 - Metin temizleme, paragraf ayırma ve özetleme

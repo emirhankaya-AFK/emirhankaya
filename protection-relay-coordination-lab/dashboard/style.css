@@ -1,0 +1,28 @@
+:root { color-scheme: dark; font-family: Inter, ui-sans-serif, system-ui, sans-serif; }
+* { box-sizing: border-box; }
+body { margin: 0; background: #0b1016; color: #e7edf4; }
+main { width: min(1040px, 92vw); margin: 0 auto; padding: 64px 0; }
+header { max-width: 720px; margin-bottom: 34px; }
+.eyebrow { color: #57d3a0; font-size: 12px; font-weight: 800; letter-spacing: .16em; }
+h1 { margin: 8px 0; font-size: clamp(34px, 6vw, 62px); line-height: 1; letter-spacing: -.04em; }
+header p { color: #9aa9b8; line-height: 1.6; }
+.controls, .panel, .summary article { background: #121a23; border: 1px solid #253241; border-radius: 12px; }
+.controls { display: flex; gap: 12px; align-items: center; padding: 16px; }
+select, button { border: 1px solid #344558; border-radius: 8px; padding: 10px 12px; font: inherit; }
+select { flex: 1; background: #0b1016; color: #e7edf4; }
+button { background: #57d3a0; color: #06140e; font-weight: 800; cursor: pointer; }
+.summary { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 14px 0; }
+.summary article { padding: 18px; }
+.summary span { display: block; color: #8091a3; font-size: 13px; }
+.summary strong { display: block; margin-top: 8px; font-size: 22px; }
+.panel { padding: 20px; margin-top: 14px; overflow-x: auto; }
+h2 { margin-top: 0; font-size: 18px; }
+.relay { display: grid; grid-template-columns: 190px 1fr 85px; align-items: center; gap: 12px; margin: 12px 0; }
+.track { height: 12px; background: #24313e; border-radius: 99px; overflow: hidden; }
+.bar { height: 100%; background: #57d3a0; border-radius: inherit; }
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: 12px 8px; border-bottom: 1px solid #253241; text-align: left; }
+th { color: #8091a3; font-size: 12px; text-transform: uppercase; }
+.pass { color: #57d3a0; } .fail { color: #ff7b72; }
+footer { margin-top: 24px; color: #6f8091; font-size: 13px; }
+@media (max-width: 680px) { .summary { grid-template-columns: 1fr; } .controls { align-items: stretch; flex-direction: column; } .relay { grid-template-columns: 1fr; } }

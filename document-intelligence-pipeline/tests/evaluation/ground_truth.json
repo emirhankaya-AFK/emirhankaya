@@ -1,0 +1,81 @@
+{
+  "documents": [
+    {
+      "file": "samples/invoices/sample_invoice_1.pdf",
+      "document_type": "invoice",
+      "required_fields": {
+        "fatura_no": "FTR-2024-001234",
+        "tarih": "15.03.2024",
+        "vade_tarihi": "15.04.2024",
+        "satici_adi": "ÖRNEK TİCARET",
+        "satici_vkn": "1234567890",
+        "alici_adi": "Test Yapı Malzemeleri",
+        "kdv_orani": "20",
+        "toplam_tutar_contains": "36.000",
+        "iban_prefix": "TR"
+      },
+      "must_be_valid": true,
+      "expected_line_items_count": 4
+    },
+    {
+      "file": "samples/invoices/sample_invoice_2.pdf",
+      "document_type": "invoice",
+      "required_fields": {
+        "fatura_no_contains": "INV-2024",
+        "tarih": "01.06.2024",
+        "para_birimi_or_total_contains": "USD"
+      },
+      "must_be_valid": true,
+      "expected_line_items_count": 2
+    },
+    {
+      "file": "samples/invoices/sample_invoice_3_incomplete.pdf",
+      "document_type": "invoice",
+      "required_fields": {},
+      "must_be_valid": false,
+      "expected_missing_fields": ["fatura_no"]
+    },
+    {
+      "file": "samples/contracts/sample_contract_1.pdf",
+      "document_type": "contract",
+      "required_fields": {
+        "sozlesme_no_contains": "SZ-2024",
+        "baslangic_tarihi_contains": "2024",
+        "taraflar_min_count": 1,
+        "fesih_sartlari_min_count": 1
+      },
+      "must_be_valid": true
+    },
+    {
+      "file": "samples/contracts/sample_contract_2_nda.pdf",
+      "document_type": "contract",
+      "required_fields": {
+        "sozlesme_no_contains": "GZ-2024",
+        "fesih_sartlari_min_count": 1,
+        "ceza_klozu_non_empty": true
+      },
+      "must_be_valid": false,
+      "note": "NDA has no sozlesme_no field required explicitly"
+    },
+    {
+      "file": "samples/technical/sample_technical_1_api_doc.pdf",
+      "document_type": "technical",
+      "required_fields": {
+        "versiyon_contains": "2.1",
+        "bolumler_min_count": 2,
+        "anahtar_kelimeler_min_count": 1,
+        "revizyon_gecmisi_min_count": 0
+      },
+      "must_be_valid": true
+    },
+    {
+      "file": "samples/technical/sample_technical_2_installation.pdf",
+      "document_type": "technical",
+      "required_fields": {
+        "versiyon_contains": "1.3",
+        "bolumler_min_count": 1
+      },
+      "must_be_valid": true
+    }
+  ]
+}

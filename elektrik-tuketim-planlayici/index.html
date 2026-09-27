@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#103f37">
+  <meta name="description" content="Cihaz bazında aylık elektrik tüketimi ve maliyet planlayıcı.">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="styles.css">
+  <title>Elektrik Tüketim Planlayıcı</title>
+</head>
+<body>
+  <header class="hero">
+    <div>
+      <p class="kicker">Verin cihazınızda kalır</p>
+      <h1>Elektrik tüketimini<br>cihaz cihaz görün.</h1>
+      <p class="intro">Tarifenizi kendiniz girin, aylık maliyeti hesaplayın ve kullanım planınızın ne kadar tasarruf sağlayacağını karşılaştırın.</p>
+    </div>
+    <div class="privacy">Çevrimdışı çalışır<br><strong>Sunucuya veri göndermez</strong></div>
+  </header>
+
+  <main>
+    <section class="card tariff-card">
+      <div class="section-title"><div><span>01</span><h2>Tarife bilgileri</h2></div><small>Faturanızdaki güncel değerleri kullanın</small></div>
+      <div class="form-grid">
+        <label>Kademe sınırı (kWh)<input id="threshold" type="number" min="0" step="0.01"></label>
+        <label>Alt kademe (₺/kWh)<input id="lowPrice" type="number" min="0" step="0.0001"></label>
+        <label>Üst kademe (₺/kWh)<input id="highPrice" type="number" min="0" step="0.0001"></label>
+        <label>Vergi/ek toplamı (%)<input id="extraPercent" type="number" min="0" step="0.01"></label>
+      </div>
+      <p class="hint">Tarifeler zamanla ve abone grubuna göre değişir. Uygulama güncel fiyat varsaymaz.</p>
+    </section>
+
+    <section class="card">
+      <div class="section-title"><div><span>02</span><h2>Cihazlar</h2></div><button id="add" class="secondary">+ Cihaz ekle</button></div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Cihaz</th><th>Watt</th><th>Adet</th><th>Saat/gün</th><th>Planlanan</th><th>Gün/ay</th><th>Bekleme W</th><th></th></tr></thead>
+          <tbody id="appliances"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="metrics">
+      <article><span>Mevcut tüketim</span><strong id="currentKwh">0 kWh</strong></article>
+      <article><span>Tahmini maliyet</span><strong id="currentCost">₺0</strong></article>
+      <article class="accent"><span>Planlanan tasarruf</span><strong id="saving">₺0</strong><small id="savingKwh">0 kWh</small></article>
+    </section>
+
+    <section class="card">
+      <div class="section-title"><div><span>03</span><h2>Tüketim dağılımı</h2></div></div>
+      <div id="breakdown" class="breakdown"></div>
+    </section>
+
+    <section class="actions">
+      <button id="exportJson">JSON yedeği</button>
+      <label class="button-label">JSON içe aktar<input id="importJson" type="file" accept="application/json"></label>
+      <button id="exportCsv">CSV raporu</button>
+      <button id="reset" class="danger">Tümünü sıfırla</button>
+    </section>
+  </main>
+
+  <footer>Sonuçlar tahmindir; cihaz etiketi, ölçüm cihazı ve gerçek fatura değerleri farklılık gösterebilir.</footer>
+  <template id="rowTemplate">
+    <tr>
+      <td><input data-key="name" aria-label="Cihaz adı" type="text"></td>
+      <td><input data-key="watts" aria-label="Watt" type="number" min="0"></td>
+      <td><input data-key="quantity" aria-label="Adet" type="number" min="1"></td>
+      <td><input data-key="hours" aria-label="Saat gün" type="number" min="0" max="24" step="0.1"></td>
+      <td><input data-key="plannedHours" aria-label="Planlanan saat" type="number" min="0" max="24" step="0.1"></td>
+      <td><input data-key="days" aria-label="Gün ay" type="number" min="0" max="31"></td>
+      <td><input data-key="standbyWatts" aria-label="Bekleme watt" type="number" min="0" step="0.1"></td>
+      <td><button class="remove" aria-label="Cihazı sil">×</button></td>
+    </tr>
+  </template>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
