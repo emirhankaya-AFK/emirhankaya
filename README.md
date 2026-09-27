@@ -16,6 +16,10 @@ Additional tools: OpenCV, YOLO, REST APIs, Flask, Playwright, Selenium, Beautifu
 
 ## Portfolio projects
 
+- [Air Quality Sensor Calibration](https://github.com/emirhankaya-AFK/air-quality-sensor-calibration) — temporal validation, conformal uncertainty and sensor drift
+- [Semiconductor Yield Prediction](https://github.com/emirhankaya-AFK/semiconductor-yield-prediction) — rare-event manufacturing quality prediction
+- [NASA Turbofan RUL Prediction](https://github.com/emirhankaya-AFK/nasa-turbofan-rul-prediction) — remaining useful life estimation with classical ML and GRU
+- [Motor Bearing Fault Diagnosis](https://github.com/emirhankaya-AFK/motor-bearing-fault-diagnosis) — FFT, wavelets and cross-load fault classification
 - [AI Resume / Document Analyzer](https://github.com/emirhankaya-AFK/ai-resume-document-analyzer)
 - [Computer Vision API](https://github.com/emirhankaya-AFK/yolo-vision-api)
 - [Job Tracker & Automation](https://github.com/emirhankaya-AFK/job-tracker-automation)

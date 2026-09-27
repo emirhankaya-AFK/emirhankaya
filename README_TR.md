@@ -16,6 +16,11 @@ Ek araçlar: OpenCV, YOLO, REST API, Flask, Playwright, Selenium, Beautiful Soup
 
 ## Portföy projeleri
 
+- [Hava Kalitesi Sensör Kalibrasyonu](https://github.com/emirhankaya-AFK/air-quality-sensor-calibration) — zaman sıralı doğrulama, belirsizlik ve sensör kayması
+- [Yarı İletken Üretim Hatası Tahmini](https://github.com/emirhankaya-AFK/semiconductor-yield-prediction) — dengesiz sınıflarda üretim kalitesi tahmini
+- [NASA Turbofan Kalan Ömür Tahmini](https://github.com/emirhankaya-AFK/nasa-turbofan-rul-prediction) — klasik makine öğrenmesi ve GRU ile kalan ömür
+- [Motor Rulman Arızası Teşhisi](https://github.com/emirhankaya-AFK/motor-bearing-fault-diagnosis) — FFT, dalgacık ve yükler arası arıza sınıflandırması
+
 - [AI Resume / Document Analyzer](https://github.com/emirhankaya-AFK/ai-resume-document-analyzer)
 - [Computer Vision API](https://github.com/emirhankaya-AFK/yolo-vision-api)
 - [Job Tracker & Automation](https://github.com/emirhankaya-AFK/job-tracker-automation)
